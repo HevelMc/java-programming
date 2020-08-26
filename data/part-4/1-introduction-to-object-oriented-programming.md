@@ -605,7 +605,7 @@ Lisää pillille vielä metodi `public void soi()`, joka tulostaa pillin äänen
 
 Pillin tulee toimia seuraavasti. -->
 
-Create a class named `Whistle`. Add the variable `private String sound` to the class. After that, create the constructor `public Whistle(String whistleSound)`, which is used to create a new whistle that's given a sound.
+Create a class named `Whistle`. Add the variable `private String sound` to the class. After that, create the constructor `public Whistle(String whistleSound)`, which is used to create a new whistle that's given a sound. Then, create the `public void sound()` method, that works as in the example below :
 
 <!-- ```java
 Pilli sorsapilli = new Pilli("Kvaak");
