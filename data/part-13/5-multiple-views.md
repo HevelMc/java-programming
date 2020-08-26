@@ -104,7 +104,7 @@ When first started, the program should display the first view.
 
 <!-- Tutustutaan seuraavaksi kaksi erillistä näkymää sisältävään esimerkkiin. Ensimmäisessä näkymässä käyttäjää pyydetään syöttämään salasana. Jos käyttäjä kirjoittaa väärän salasanan, väärästä salasanasta ilmoitetaan. Jos käyttäjä kirjoittaa oikean salasanan, ohjelma vaihtaa seuraavaan näkymään. Ohjelman toiminta on seuraavanlainen. -->
 
-Let's get familiar with an example containing two different views. In the first view user is asked to input a password. If the user types a wrong password, the application informs the user about the mistakee. If the user types the correct passwod, the application switches to the next view. The program functions as follows:
+Let's get familiar with an example containing two different views. In the first view user is asked to input a password. If the user types a wrong password, the application informs the user about the mistake. If the user types the correct passwod, the application switches to the next view. The program functions as follows:
 
 
 <img src="../img/material/gui-salasana.gif" />
@@ -346,14 +346,14 @@ public class ExampleApplication extends Application {
 
         // 2.2. Add subviews to button. Pressing the buttons will change the view
         first.setOnAction((event) -> layout.setCenter(firstLayout));
-        second.setOnAction((event) -> asettelu.setCenter(secondLayout));
+        second.setOnAction((event) -> layout.setCenter(secondLayout));
 
         // 2.3. Set initial view
         layout.setCenter(firstLayout);
 
 
         // 3. Create main scene with layout 
-        Scene scene = new Scene(asettelu);
+        Scene scene = new Scene(layout);
 
 
         // 4. Show the main scene
@@ -433,7 +433,7 @@ public interface PersonWarehouse {
 
 <!-- Käyttöliittymää toteutettaessa hyvä aloitustapa on ensin käyttöliittymän piirtäminen, jota seuraa sopivien käyttöliittymäkomponenttien lisääminen käyttöliittymään. Henkilöiden tallennuksessa tarvitsemme kentät nimelle ja henkilötunnukselle sekä napin jolla henkilö voidaan lisätä. Käytetään luokkaa TextField nimen ja henkilötunnuksen syöttämiseen ja luokkaa Button napin toteuttamiseen. Luodaan käyttöliittymään lisäksi käyttöliittymän toiminnallisuutta selventävät Label-tyyppiset selitystekstit. -->
 
-When implementing a user interface a good starting point is drawing the interface followed bt adding appropriate user interface components to the user interface. When saving persons to a database we need a field for name, a field for social security number and a button for adding the person. In addition we'll also create
+When implementing a user interface, a good starting point is drawing the interface, followed by adding appropriate user interface components to the user interface. When saving persons to a database we need a field for name, a field for social security number and a button for adding the person. In addition we'll also create Label-type explanatory texts in the user interface to clarify the functionality of the user interface.
 
 <!--
 Käytetään käyttöliittymän asetteluun `GridPane`-asettelijaa. Rivejä käyttöliittymässä on 3, sarakkeita 2. Lisätään tapahtumien käsittelytoiminnallisuus myöhemmin. Käyttöliittymän alustusmetodi näyttää seuraavalta.
@@ -534,7 +534,7 @@ public void start(Stage window) {
     // ...
 
     addButton.setOnAction((event) -> {
-        warehouse.talleta(new Person(nameText.getText(), secText.getText());
+        warehouse.deposit(new Person(nameText.getText(), secText.getText());
     });
     // ...
 }
@@ -626,7 +626,7 @@ public class PersonApp extends Application {
         Button addButton = new Button("Add person!");
 
         addButton.setOnAction((event) -> {
-            warehouse.talleta(new Person(nameText.getText(), secText.getText());
+            warehouse.deposit(new Person(nameText.getText(), secText.getText());
         });
 
         GridPane components = new GridPane();
@@ -752,7 +752,7 @@ public class Dictionary {
 
 <!-- Sanakirjan voisi toteuttaa myös niin, että sanan arpominen loisi aina uduen listan kaannokset-hajautustaulun avaimista. Tällöin sanat-listalle ei olisi erillistä tarvetta. Tämä vaikuttaisi kuitenkin sovelluksen tehokkuuteen (tai, olisi ainakin vaikuttanut ennen vuosituhannen vaihdetta -- nykyään koneet ovat jo hieman nopeampia..). -->
 
-You could also implement the Dictionary so that returning a random word would always generate a new list of words from the keys of the translations hash map. In such a case there would be no need to maintaing a separate list of words. However, this would have an effect on the performance of the program (or it would have had an effect before the turn of the millennium -- computers these days are a tad faster...).
+You could also implement the Dictionary so that returning a random word would always generate a new list of words from the keys of the translations hash map. In such a case there would be no need to maintain a separate list of words. However, this would have an effect on the performance of the program (or it would have had an effect before the turn of the millennium -- computers these days are a tad faster...).
 
 
 <!-- ### Sanojen syöttäminen -->
@@ -826,7 +826,7 @@ public class Syottonakyma {
 ``` -->
 
 ```java
-package applicatoin;
+package application;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -1169,7 +1169,7 @@ Follow the previous example and create an application for practising translation
 
 <!-- Käyttöliittymästä tarkemmin. Sanojen syöttämisnäkymän näyttävän napin tekstin tulee olla "Lisää sanoja". Sanojen harjoittelunäkymän näyttävän napin tekstin tulee olla "Harjoittele". Sanoja syötettäessä ensimmäisen tekstikentän tulee olla sana alkuperäiskielellä, ja toisen tekstikentän tulee olla sana käännettynä. Syöttämiseen käytetyn napin tekstin tulee olla "Lisää sanapari". Harjoittelutilassa käyttäjältä kysytään aina sanoja alkuperäiskielellä ja hänen tulee kirjoittaa sanojen käännöksiä. Vastauksen tarkistamiseen käytetyn napin tekstin tulee olla "Tarkista". Jos vastaus on oikein, käyttöliittymässä näytetään teksti "Oikein!". Jos taas vastaus on väärin, käyttöliittymässä näytetään teksti "Väärin!" sekä tieto oikeasta vastausksesta. -->
 
-Let's discuss the user interface in more detail. The button that shows the input view should contain the text "Enter new words". The button that shows the practice view should contain the text "Practice". In the input view, the first text field should have the word in the original language, and the second text field should contain the translation of that word. The button that adds this word and the translation should read "Add the word pair". In the practice view the user is represented with a word in the original language, and their task is to write down the translation. If the answer is correct, the user interface displays the text "Correct!". If the answer is incorrect, the text that is displayed is "Incorrec!". In this case the correct translation is also shown.
+Let's discuss the user interface in more detail. The button that shows the input view should contain the text "Enter new words". The button that shows the practice view should contain the text "Practice". In the input view, the first text field should have the word in the original language, and the second text field should contain the translation of that word. The button that adds this word and the translation should read "Add the word pair". In the practice view the user is represented with a word in the original language, and their task is to write down the translation. If the answer is correct, the user interface displays the text "Correct!". If the answer is incorrect, the text that is displayed is "Incorrect!". In this case the correct translation is also shown.
 
 
 <img src="../img/material/gui-vocabulary-practice.gif"/>
@@ -1188,7 +1188,7 @@ There are no automatic tests in this project -- return your solution when the pr
 
 <!-- Tässä tehtävässä toteutat 3x3-kokoisen ristinollapelin. Tehtävä on jaettu kolmeen osaan: ensin luodaan käyttöliittymän osat, sitten nappien toiminnallisuus, ja lopuksi mahdollisuus pelin loppuun pelaamiseen. -->
 
-In this exercise you will create a tic-tac-toe game of size 3x3. The assignment has been divided into three parts: first we create the parts of the user interface, then the funcionality of the buttons, and finally the option to play the game to conclusion.
+In this exercise you will create a tic-tac-toe game of size 3x3. The assignment has been divided into three parts: first we create the parts of the user interface, then the functionality of the buttons, and finally the option to play the game to conclusion.
 
 <!-- <img src="../img/material/gui-ristinolla.png" alt="3x3 ristinolla."/> -->
 
@@ -1227,7 +1227,7 @@ The players of the game are X and O. X always takes the first turn. Add the foll
 
 <!-- Pelin ylälaidassa olevan tekstikentän tulee kertoa aina vuorossa oleva pelaaja. Teksti on aluksi "Vuoro: X". Kun X pelaa vuoronsa, eli painaa jotain nappia, tekstiksi asetetaan "Vuoro: O". Tämän jälkeen kun O pelaa vuoronsa, tekstiksi asetetaan taas "Vuoro: X". -->
 
-The text component at the top of the game must always show whose turn it is. The text begins as "Turn: X". Once X playes their turn, i.e. presses a button, the text should change to "Turn: O". After the player O has played their turn, the text turns once again into "Turn: X".
+The text component at the top of the game must always show whose turn it is. The text begins as "Turn: X". Once X plays their turn, i.e. presses a button, the text should change to "Turn: O". After the player O has played their turn, the text turns once again into "Turn: X".
 
 <!-- Huom! Jos pelaaja on jo pelannut tietyn ruudun, ei toinen pelaaja saa enää pelata sitä. Varmista, ettei vuoro muutu tilanteessa, jossa pelaaja yrittää pelata jo pelatun ruudun. -->
 
@@ -1235,7 +1235,7 @@ NB! If a player has already placed their symbol in a position, the other player 
 
 <!-- Huom2! Mahdollisesti kohtaamasi virhe "local variables referenced from a lambda expression must be final or effectively final" johtuu siitä, että rajapinnoista tehdyt oliot eivät voi käyttää metodin ulkopuolella määriteltyjä muuttujia. Voit "kiertää" virheen luomalla uudet muuttujat, joihin asetat ongelmalliset arvot juuri ennen niiden käyttöönottoa metodissa. -->
 
-NB!! You might encounter the following error: "local variables referenced from a lambda expression must be final or effectively final". This is because objects instanced of interfaces cannot use variables that are defined outside of the method. You can avoid the error by creating new variables that you set the problematic values to just before using them in the method.
+NB!! You might encounter the following error: "local variables referenced from a lambda expression must be final or effectively final". This is because objects instanced of interfaces cannot use variables that are defined outside the method. You can avoid the error by creating new variables that you set the problematic values to just before using them in the method.
 
 <!-- <h2>Pelin loppuun vieminen</h2> -->
 
