@@ -226,7 +226,7 @@ Ada: [3, 4, 3, 3]
 
 </sample-output>
 
-<programming-exercise name='Dictionary of many translations' tmcname='part08Part08_14.DictionaryOfManyTranslations'>
+<programming-exercise name='Dictionary of many translations' tmcname='part08-Part08_14.DictionaryOfManyTranslations'>
 
 <!-- Tehtävänäsi on toteuttaa luokka `UseanKaannoksenSanakirja`, johon voidaan lisätä yksi tai useampi käännös jokaiselle sanalle. Luokan tulee toteuttaa seuraavat metodit: -->
 
