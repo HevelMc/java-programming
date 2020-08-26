@@ -1349,8 +1349,8 @@ Task: **vacuum clean**
 Command: **list**
 1: go to the store
 2: vacuum clean
-Command: **completed**
-Which task was completed? **2**
+Command: **remove**
+Which task was removed? **2**
 Task go to the store tehty
 Command: **list**
 1: go to the store
